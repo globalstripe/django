@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Movie Listing</h1>
+<hr>
+{% for movie in movies%}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ movie.createdBy }}</a>
+              <small class="text-muted">{{ movie.date_posted|date:"F d, Y"}}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ movie.movieTitle }}</a></h2>
+            <p class="article-content">{{ movie.synopsis }}</p>
+            <hr>
+            <p><a class="article-title" href="{{ movie.imdbUrl }}">IMDB</a>
+            <a class="article-title" href="{{ movie.movieUrl }}">Trailer</a></p>
+            <iframe width="560" height="315" src="{{ movie.youtubeUrl }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
